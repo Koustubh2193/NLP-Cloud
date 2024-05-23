@@ -4,4 +4,5 @@ request
 jason
 response
 boto3
+nltk
 re
