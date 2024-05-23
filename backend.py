@@ -22,7 +22,7 @@ def scrape():
     try:
         session = boto3.Session(
             aws_access_key_id=AAKI,
-            aws_secret_access_key=ASAk,
+            aws_secret_access_key=ASAK,
             region_name='ap-south-1'
         )
 
