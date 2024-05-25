@@ -21,13 +21,12 @@ def scrape_text(url):
         # Extract and concatenate the text from each element
         text = ' '.join(element.strip() for element in text_elements if element.strip())
         text = remove_enclosed_text(text)
-        scraped_data = scrape_text(url)
-        scraped_data = remove_enclosed_text(str(scraped_data))
+        # scraped_data = scrape_text(url)
+        scraped_data = remove_enclosed_text(str(text))
         tokens = tokenize_text(scraped_data)
         tokens = remove_html_tokens(tokens)
         text = remove_stopwords_and_punctuation(tokens)
 # text = "This is an example text with nouns and pronouns."
-
         print("Scrapping Successful")
         return text
     else:
@@ -44,11 +43,13 @@ def tokenize_text(text):
     # Tokenize the text into words
     tokens = word_tokenize(text)
     return tokens
+
 def remove_html_tokens(tokens):
     html_tag_pattern = r'<[^>]+>'
     # Remove HTML tags and tokens containing '<' or '>'
     clean_tokens = [token for token in tokens if not re.match(html_tag_pattern, token)]
     return clean_tokens
+
 def remove_stopwords_and_punctuation(words):
     # Get the set of stopwords
     stop_words = set(stopwords.words('english'))
@@ -57,5 +58,3 @@ def remove_stopwords_and_punctuation(words):
     # Join the clean words back into a single string
     clean_text = ' '.join(clean_words)
     return clean_text
-
-
